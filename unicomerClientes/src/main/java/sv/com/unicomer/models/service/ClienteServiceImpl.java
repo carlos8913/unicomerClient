@@ -39,5 +39,17 @@ public class ClienteServiceImpl implements IClienteService {
 	public void delete(Long id) {
 		clienteDao.deleteById(id);
 	}
+	
+	@Override
+	@Transactional()
+    public Cliente update(Cliente cliente) {
+        return clienteDao.save(cliente);
+    }
+	
+	@Override
+	@Transactional()
+	public Cliente get(Long id) {
+	     return clienteDao.findById(id).get();
+	}
 
 }

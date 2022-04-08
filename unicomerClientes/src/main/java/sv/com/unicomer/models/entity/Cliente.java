@@ -3,6 +3,7 @@ package sv.com.unicomer.models.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,27 +19,43 @@ public class Cliente implements Serializable{
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
+	
+	@Column(name = "firtName", nullable = false, length = 50)
 	private String firtName;
+	
+	@Column(name = "lastName", nullable = false, length = 50)
 	private String lastName;
 
 	@Temporal(TemporalType.DATE)
 	private Date birthday;
+	
+	@Column(name = "gender", nullable = false, length = 1)
 	private String gender;
+	
+	@Column(name = "cellPhone", nullable = false, length = 9)
 	private String cellPhone;
+	
+	@Column(name = "homePhone", nullable = false, length = 9)
 	private String homePhone;
+	
+	@Column(name = "homeAddress", nullable = false, length = 200)
 	private String homeAddress;
+	
+	@Column(name = "profession", nullable = false, length = 50)
 	private String profession;
+	
 	private float incomes;
+	
 	@PrePersist
 	public void prePersist() {
 	}
 
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getFirtName() {

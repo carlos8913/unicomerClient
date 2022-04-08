@@ -12,4 +12,8 @@ public interface IClienteService {
 	public Cliente save(Cliente cliente);
 
 	public void delete(Long id);
+	
+    public Cliente update(Cliente cliente);
+    
+    public Cliente get(Long id);
 }
