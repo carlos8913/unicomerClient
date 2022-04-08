@@ -1,17 +1,28 @@
-package sv.com.unicomer.dto;
+package sv.com.unicomer.models.entity;
 
-import java.sql.Date;
+import java.io.Serializable;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
-public class ClienteDTO {
+@Table(name="clientuni")
+public class Cliente implements Serializable{
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String firtName;
 	private String lastName;
+
+	@Temporal(TemporalType.DATE)
 	private Date birthday;
 	private String gender;
 	private String cellPhone;
@@ -19,25 +30,11 @@ public class ClienteDTO {
 	private String homeAddress;
 	private String profession;
 	private float incomes;
-	
-	public ClienteDTO(){}
-	
-	public ClienteDTO(Integer id, String firtName, String lastName, Date birthday, String gender,
-			String cellPhone, String homePhone, String homeAddress, String profession, float incomes) {
-		super();
-		this.id = id;
-		this.firtName = firtName;
-		this.lastName = lastName;
-		this.birthday = birthday;
-		this.gender = gender;
-		this.cellPhone = cellPhone;
-		this.homePhone = homePhone;
-		this.homeAddress = homeAddress;
-		this.profession = profession;
-		this.incomes = incomes;
+	@PrePersist
+	public void prePersist() {
 	}
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
+	
 	public Integer getId() {
 		return id;
 	}
